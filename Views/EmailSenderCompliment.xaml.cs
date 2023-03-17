@@ -189,7 +189,7 @@ public partial class EmailSenderCompliment : ContentPage
     public static (string text, string author) GetQuotes()
     {
         // Read the entire contents of the text file into a string variable
-        string quotesJson = System.IO.File.ReadAllText("C:\\Users\\Bilal\\OneDrive\\Documents\\Visual Studio 2022\\Demos\\Maui Project Uppgift\\TextFile1.txt");
+        string quotesJson = System.IO.File.ReadAllText("TextFile1.txt");
 
         // Deserialize the JSON string into an array of Quote objects
         Quote[] quotes = JsonConvert.DeserializeObject<Quote[]>(quotesJson);
