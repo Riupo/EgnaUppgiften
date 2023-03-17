@@ -38,8 +38,8 @@ public partial class EmailSenderCompliment : ContentPage
         var myCollection = database.GetCollection<Models.ComplimenterMailer>("MyProductCollection");
 
         string subject = "Compliment of the day";
-        var fromAddress = new MailAddress("mailsender@digitalfunz.com", "Complimenter"); // Skriv din email
-        string fromPassword = "20Bilal20!?"; // Skriv in ditt lössenord
+        var fromAddress = new MailAddress("Dinmail@gmail.com", "Complimenter"); // Skriv din email
+        string fromPassword = "Lössenord"; // Skriv in ditt lössenord
         var viewModel = BindingContext as MailPageVM;
         var userList = viewModel.Mails.ToList();
         var toAddresses = userList.Select(u => u.Email).ToArray();
@@ -81,7 +81,7 @@ public partial class EmailSenderCompliment : ContentPage
                     compliment = await Promp(user.Promp);
                 }
                 string body;
-                string imageFilePath = "C:\\Users\\Bilal\\OneDrive\\Documents\\Visual Studio 2022\\Demos\\Maui Project Uppgift\\Resources\\Images\\lightbluerobot.png";
+                string imageFilePath = "C:\\Users\\Bilal\\OneDrive\\Documents\\Visual Studio 2022\\Demos\\Maui Project Uppgift\\EgnaUppgiften\\Resources\\Images\\lightbluerobot.png"; // ändra till din filsökväg
                 LinkedResource imageResource = new LinkedResource(imageFilePath, "image/png");
                 imageResource.ContentId = "image1";     
                 if (user.SendersName == "X" || user.SendersName == null)
@@ -125,8 +125,8 @@ public partial class EmailSenderCompliment : ContentPage
 
                 var smtp = new SmtpClient
                 {
-                    Host = "mail.privateemail.com", // Skriv din egna smtp
-                    Port = 587,
+                    Host = "mail.privateemail.com", // Skriv din egna smtp host 
+                    Port = 587, // ändra till din korrekta port
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
@@ -189,7 +189,7 @@ public partial class EmailSenderCompliment : ContentPage
     public static (string text, string author) GetQuotes()
     {
         // Read the entire contents of the text file into a string variable
-        string quotesJson = System.IO.File.ReadAllText("TextFile1.txt");
+        string quotesJson = System.IO.File.ReadAllText("C:\\Users\\Bilal\\OneDrive\\Documents\\Visual Studio 2022\\Demos\\Maui Project Uppgift\\EgnaUppgiften\\TextFile1.txt"); // ändra till din filväg
 
         // Deserialize the JSON string into an array of Quote objects
         Quote[] quotes = JsonConvert.DeserializeObject<Quote[]>(quotesJson);
