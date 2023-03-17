@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui_Project_Uppgift.Views.EmailSenderCompliment"
+             xmlns:viewmodel="clr-namespace:Maui_Project_Uppgift.ViewModels"
+             BackgroundColor="LightBlue"
+             x:DataType="viewmodel:MailPageVM"
+             Title="{Binding Emails.Title}">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Image Source="{Binding Emails.HeaderImageSource}" HeightRequest="250"></Image>
+
+            <Entry Placeholder="Email"
+               PlaceholderColor="#FFE5B4"
+               TextColor="#FEA889"
+               Text="{Binding Email}"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Entry Placeholder="Dagar"
+                   PlaceholderColor="#FFE5B4"
+                   TextColor="#FEA889"
+                   Text="{Binding Dagar}"
+                   WidthRequest="100"/>
+
+                <Entry Placeholder="Dagar som Återstår"
+                   PlaceholderColor="#FFE5B4"
+                   TextColor="#FEA889"
+                   Text="{Binding DagarÅterstår}"
+                   WidthRequest="100"/>
+            </StackLayout>
+
+            <Entry Placeholder="The Person Has? 'X' (Skriv på Engelska)"
+               PlaceholderColor="#FFE5B4"
+               TextColor="#FEA889"
+               Text="{Binding Promp}"/>
+
+            <Entry Placeholder="Skriv in Senders Name"
+               PlaceholderColor="#FFE5B4"
+               TextColor="#FEA889"
+               Text="{Binding SendersName}"/>
+
+            <Button x:Name="CounterBtn1"
+                Command="{Binding AddComplimentMailCommand}"
+                Text="Lägg till mail"
+                HorizontalOptions="Center"
+                BackgroundColor="#FFE5B4"/>
+
+            <Button x:Name="Skickade"
+                Clicked="Send"
+                Text="Skicka alla mails"
+                HorizontalOptions="Center"
+                BackgroundColor="#FFE5B4"/>
+
+<ListView ItemsSource="{Binding Mails}">
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell>
+                <Grid Padding="10,5"
+                      RowDefinitions="Auto, *, *, *, *"
+                      ColumnDefinitions="200, 200, 200, 200"
+                      ColumnSpacing="10">
+
+                    <Label Grid.Row="0"
+                           TextColor="#FEA889"
+                           Text="{Binding Email}"
+                           FontSize="15"/>
+
+                    <Label Grid.Row="1"
+                           TextColor="#FEA889"
+                           Text="{Binding Dagar, StringFormat='{0} Dagar'}"
+                           FontSize="15"/>
+
+                                <Label Grid.Row="2"
+                           TextColor="#FEA889"
+                           Text="{Binding DagarÅterstår, StringFormat='{0} DagarÅterstår'}"
+                           FontSize="15"/>
+
+                                <Label Grid.Row="3"
+                           TextColor="#FEA889"
+                           Text="{Binding SendersName}"
+                           FontSize="15"/>
+
+                    <Label Grid.Row="4"
+                           TextColor="#FEA889"
+                           Text="{Binding Promp}"
+                           FontSize="15"/>
+
+                                <Button Grid.Row="0"
+                            Grid.Column="2"
+                            Text="Radera" 
+                            HorizontalOptions="Center"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MailPageVM}}, Path=DeleteMailCommand}"
+                            CommandParameter="{Binding .}"/>
+                            </Grid>
+                        </ViewCell>
+                
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

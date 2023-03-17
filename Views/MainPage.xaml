@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local ="clr-namespace:Maui_Project_Uppgift"
+             x:Class="Maui_Project_Uppgift.MainPage"
+                         BackgroundColor="LightBlue">
+    <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+        <Image
+                Source="mailer.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+        <Label
+                Text="Welcome to the EmailComplimenter"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+        <Button Text="EmailSender"
+                    Clicked="OnClickedGoEmail"
+                    HorizontalOptions="Center"></Button>
+
+        <Button Text="Bortagna Mails"
+                    Clicked="OnClickedGoBortagna"
+                    HorizontalOptions="Center"></Button>
+    </VerticalStackLayout>
+
+</ContentPage>
